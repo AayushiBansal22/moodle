@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "42615857067",
+    "project_id": "moodle-ceda9",
+    "storage_bucket": "moodle-ceda9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42615857067:android:190accde2017d9db47fcee",
+        "android_client_info": {
+          "package_name": "com.example.moodle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "42615857067-mbll7o5mjhj79lq3ou8tdp6ivv0qovll.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOGUXJr_PVIbFZb8593APkkMVze5oNOfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "42615857067-mbll7o5mjhj79lq3ou8tdp6ivv0qovll.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
