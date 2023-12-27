@@ -25,7 +25,7 @@ class _NotificationsState extends State<Notifications> {
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.black,
-              maximumSize: const Size(140, 38),
+              maximumSize: const Size(142, 38),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)
               ),

@@ -22,6 +22,23 @@ class _EditGradeState extends State<EditGrade> {
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
 
   @override
+  void initState() {
+    super.initState();
+    fetchDocumentData();
+  }
+
+  Future<void> fetchDocumentData() async {
+    DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance.collection('grades').doc(widget.docId).get();
+    Map<String, dynamic> documentData = documentSnapshot.data() as Map<String, dynamic>;
+
+    setState(() {
+      titleController.text = documentData['title'];
+      usernameController.text = documentData['username'];
+      gradeController.text = documentData['grade'];
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
@@ -46,7 +63,7 @@ class _EditGradeState extends State<EditGrade> {
                   child: TextFormField(
                     controller: titleController,
                     validator: (value){
-                      if(value == null || value!.isEmpty){
+                      if(value == null || value.isEmpty){
                         return 'Course Name is required';
                       }
                       return null;
@@ -56,13 +73,15 @@ class _EditGradeState extends State<EditGrade> {
                     },
                     obscureText: false,
                     decoration: InputDecoration(
-                      hintText: 'Course Name',
-                      hintStyle: TextStyle(color: Colors.grey[500]),
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey.shade400)
+                      labelText: 'Course Name',
+                      labelStyle: TextStyle(color: Colors.grey[500]),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade700),
+                        borderRadius: BorderRadius.circular(8),
                       ),
                       fillColor: Colors.grey[200],
                       filled: true,
@@ -75,7 +94,7 @@ class _EditGradeState extends State<EditGrade> {
                   child: TextFormField(
                     controller: usernameController,
                     validator: (value){
-                      if(value == null || value!.isEmpty){
+                      if(value == null || value.isEmpty){
                         return 'Student Username is required';
                       }
                       return null;
@@ -85,13 +104,15 @@ class _EditGradeState extends State<EditGrade> {
                     },
                     obscureText: false,
                     decoration: InputDecoration(
-                      hintText: 'Student Username',
-                      hintStyle: TextStyle(color: Colors.grey[500]),
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey.shade400)
+                      labelText: 'Student Username',
+                      labelStyle: TextStyle(color: Colors.grey[500]),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade700),
+                        borderRadius: BorderRadius.circular(8),
                       ),
                       fillColor: Colors.grey[200],
                       filled: true,
@@ -115,13 +136,15 @@ class _EditGradeState extends State<EditGrade> {
                     },
                     obscureText: false,
                     decoration: InputDecoration(
-                      hintText: 'Course Grade',
-                      hintStyle: TextStyle(color: Colors.grey[500]),
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey.shade400)
+                      labelText: 'Course Grade',
+                      labelStyle: TextStyle(color: Colors.grey[500]),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade700),
+                        borderRadius: BorderRadius.circular(8),
                       ),
                       fillColor: Colors.grey[200],
                       filled: true,

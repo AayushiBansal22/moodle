@@ -36,10 +36,6 @@ class NotificationsDisplay extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    /*Image.asset(
-                        course.image,
-                        height: 100,
-                    ),*/
                     Text(
                       display['title'],
                       style: const TextStyle(
