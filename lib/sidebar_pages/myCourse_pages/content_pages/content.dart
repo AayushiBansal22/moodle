@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:moodle/commonAppBar.dart';
+import 'package:moodle/common_params/commonAppBar.dart';
+import 'package:moodle/common_params/screenSize.dart';
 import 'package:provider/provider.dart';
 import 'dart:developer';
 
-import 'package:moodle/navBar.dart';
+import 'package:moodle/common_params/navBar.dart';
 import 'package:moodle/sidebar_pages/myCourse_pages/content_pages/contentDisplay.dart';
 import 'package:moodle/courseIdModel.dart';
+
 
 class Content extends StatefulWidget {
   const Content({super.key});
@@ -36,7 +38,7 @@ class _ContentState extends State<Content> {
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.black,
-              maximumSize: const Size(140, 38),
+              maximumSize: Size(ScreenSize.widthPercentage(context, 35.65), ScreenSize.heightPercentage(context, 5.005)),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)
               ),
@@ -70,14 +72,14 @@ class _ContentState extends State<Content> {
         appBar: CommonAppBar(),
         body: Column(
           children: [
-            SizedBox(height: 20,),
+            SizedBox(height: ScreenSize.heightPercentage(context, 2.634),),
             FutureBuilder(
                 future: getUserRole(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     Container container = snapshot.data ?? Container();
                     return Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                      padding: EdgeInsets.fromLTRB(20, ScreenSize.heightPercentage(context, 2.634), 20, 0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -94,9 +96,9 @@ class _ContentState extends State<Content> {
                       ),
                     );
                   } else {
-                    return const Padding(
-                      padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
-                      child: Text(
+                    return Padding(
+                      padding: EdgeInsets.fromLTRB(20, ScreenSize.heightPercentage(context, 2.634), 20, 0),
+                      child: const Text(
                         'My Content',
                         style: TextStyle(
                           fontSize: 25,
@@ -108,7 +110,7 @@ class _ContentState extends State<Content> {
                   }
                 }
             ),
-            const SizedBox(height: 10,),
+            SizedBox(height: ScreenSize.heightPercentage(context, 1.32),),
             Expanded(
               child: ContentDisplay(courseId: courseId!),
             ),

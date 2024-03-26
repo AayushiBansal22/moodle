@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:moodle/common_params/screenSize.dart';
 
 class SemestersGrid extends StatelessWidget {
   SemestersGrid({super.key});
@@ -25,9 +26,9 @@ class SemestersGrid extends StatelessWidget {
             DocumentSnapshot course = snapshot.data!.docs[index];
             Map<String, dynamic> display = course.data() as Map<String, dynamic>;
             return Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: ScreenSize.heightPercentage(context, 1.32)),
               child: Container(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: ScreenSize.heightPercentage(context, 1.32)),
                 decoration: BoxDecoration(
                     color: Colors.black,
                     borderRadius: BorderRadius.circular(15.0)
@@ -38,7 +39,7 @@ class SemestersGrid extends StatelessWidget {
                         course.image,
                         height: 100,
                     ),*/
-                    const SizedBox(height: 10,),
+                    SizedBox(height: ScreenSize.heightPercentage(context, 1.32),),
                     Text(
                       display['title'],
                       style: const TextStyle(
@@ -47,9 +48,9 @@ class SemestersGrid extends StatelessWidget {
                           fontWeight: FontWeight.w600
                       ),
                     ),
-                    const SizedBox(height: 20,),
+                    SizedBox(height: ScreenSize.heightPercentage(context, 2.634),),
                     Container(
-                      height: 50,
+                      height: ScreenSize.heightPercentage(context, 9.22),
                       child: Scrollbar(
                         child: SingleChildScrollView(
                           child: Text(
@@ -59,30 +60,34 @@ class SemestersGrid extends StatelessWidget {
                                 color: Colors.white,
                                 fontWeight: FontWeight.w400
                             ),
+                            textAlign: TextAlign.justify,
                           ),
                         ),
                       ),
                     ),
-                    const SizedBox(height: 20,),
-                    Center(
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.grey[600],
-                          maximumSize: const Size(135, 40),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)
+                    const Spacer(),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: ScreenSize.heightPercentage(context, 0.79)),
+                      child: Center(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.grey[600],
+                            maximumSize: Size(ScreenSize.widthPercentage(context, 34.375), ScreenSize.heightPercentage(context, 5.27)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)
+                            ),
                           ),
-                        ),
-                        onPressed: () {
-                          Navigator.pushNamed(context, 'myCourses');
-                        },
-                        child: Center(
-                          child: Text(
-                            'View Semester',
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                          onPressed: () {
+                            Navigator.pushNamed(context, 'myCourses');
+                          },
+                          child: Center(
+                            child: Text(
+                              'View Semester',
+                              style: const TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
@@ -93,9 +98,9 @@ class SemestersGrid extends StatelessWidget {
               ),
             );
           },
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 0.9,
+            childAspectRatio: (ScreenSize.screenWidth(context) / ScreenSize.screenHeight(context)) * 1.65,
           ),
         );
       },

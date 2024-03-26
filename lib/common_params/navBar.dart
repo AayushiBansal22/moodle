@@ -8,8 +8,11 @@ import 'package:moodle/sidebar_pages/home_pages/home.dart';
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
 
-  void signOut() {
+  void signOut(BuildContext context) {
     FirebaseAuth.instance.signOut();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Navigator.pushReplacementNamed(context, 'login');
+    });
   }
 
   @override
@@ -114,7 +117,7 @@ class NavBar extends StatelessWidget {
               leading: IconButton(
                 icon: Icon(Icons.logout),
                 color: Colors.white,
-                onPressed: () => signOut(),
+                onPressed: () => signOut(context),
               ),
               title: Text("Logout",
                 style: TextStyle(

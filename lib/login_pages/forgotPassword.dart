@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:moodle/common_params/screenSize.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
@@ -28,12 +29,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         child: Center(
           child: Column(
             children: [
-              const SizedBox(height: 50,),
-              const Icon(
+              SizedBox(height: ScreenSize.heightPercentage(context, 13.17),),
+              Icon(
                 Icons.lock,
-                size: 100,
+                size: ScreenSize.heightPercentage(context, 13.17),
               ),
-              const SizedBox(height: 50,),
+              SizedBox(height: ScreenSize.heightPercentage(context, 6.59),),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Text('Enter the registered email address at which you wish to receive the password reset link',
@@ -44,7 +45,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   ),
                 ),
               ),
-              const SizedBox(height: 35,),
+              SizedBox(height: ScreenSize.heightPercentage(context, 4.61),),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 25),
                 child: TextFormField(
@@ -66,17 +67,17 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   ),
                 ),
               ),
-              const SizedBox(height: 10,),
+              SizedBox(height: ScreenSize.heightPercentage(context, 1.32),),
               Container(
                   margin: EdgeInsets.symmetric(horizontal: 25),
                   child: Text(errorMessage,
                       style: TextStyle(color: Colors.red)
                   )
               ),
-              const SizedBox(height: 25,),
+              SizedBox(height: ScreenSize.heightPercentage(context, 3.29),),
               Container(
                 height: 100,
-                padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 75),
+                padding: EdgeInsets.symmetric(vertical: ScreenSize.heightPercentage(context, 3.29), horizontal: 75),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,

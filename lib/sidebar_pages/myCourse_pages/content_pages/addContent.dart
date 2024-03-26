@@ -5,8 +5,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
-import 'package:moodle/commonAppBar.dart';
-import 'package:moodle/navBar.dart';
+import 'package:moodle/common_params/commonAppBar.dart';
+import 'package:moodle/common_params/navBar.dart';
+import 'package:moodle/common_params/screenSize.dart';
 import 'package:moodle/courseIdModel.dart';
 import 'dart:developer';
 
@@ -75,16 +76,16 @@ class _AddContentState extends State<AddContent> {
           key: _key,
             child: Column(
               children: [
-                const SizedBox(height: 50,),
+                SizedBox(height: ScreenSize.heightPercentage(context, 6.59),),
                 Text('Provide New Content Details',
                   style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey[700]
                   ),
                 ),
-                const SizedBox(height: 35,),
+                SizedBox(height: ScreenSize.heightPercentage(context, 4.61),),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 25),
+                  margin: const EdgeInsets.symmetric(horizontal: 25),
                   child: TextFormField(
                     controller: titleController,
                     validator: (value){
@@ -111,7 +112,7 @@ class _AddContentState extends State<AddContent> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 20,),
+                SizedBox(height: ScreenSize.heightPercentage(context, 2.634),),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 25),
                   child: TextFormField(
@@ -130,7 +131,7 @@ class _AddContentState extends State<AddContent> {
                     decoration: InputDecoration(
                       hintText: 'Chapter Description',
                       hintStyle: TextStyle(color: Colors.grey[500]),
-                      contentPadding: const EdgeInsets.fromLTRB(10,15,20,100),
+                      contentPadding: EdgeInsets.fromLTRB(10,ScreenSize.heightPercentage(context, 1.98),20,ScreenSize.heightPercentage(context, 13.17)),
                       enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.grey.shade400)
                       ),
@@ -142,7 +143,7 @@ class _AddContentState extends State<AddContent> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 20,),
+                SizedBox(height: ScreenSize.heightPercentage(context, 2.634),),
                 ElevatedButton(
                   child: Text('Upload Content'),
                   onPressed: () async {
@@ -164,17 +165,17 @@ class _AddContentState extends State<AddContent> {
                     }
                   },
                 ),
-                const SizedBox(height: 10,),
+                SizedBox(height: ScreenSize.heightPercentage(context, 1.32),),
                 Container(
                     margin: EdgeInsets.symmetric(horizontal: 25),
                     child: Text(errorMessage,
                         style: TextStyle(color: Colors.red)
                     )
                 ),
-                const SizedBox(height: 25,),
+                SizedBox(height: ScreenSize.heightPercentage(context, 3.29),),
                 Container(
                     height: 100,
-                    padding: const EdgeInsets.all(25),
+                    padding: EdgeInsets.symmetric(horizontal: 25, vertical: ScreenSize.heightPercentage(context, 3.29)),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,

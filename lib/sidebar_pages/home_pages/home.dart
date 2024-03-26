@@ -2,8 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import 'package:moodle/navBar.dart';
+import 'package:moodle/common_params/navBar.dart';
 import 'package:moodle/sidebar_pages/home_pages/semestersGrid.dart';
+import 'package:moodle/common_params/screenSize.dart';
 
 class Home extends StatefulWidget {
   Home({super.key});
@@ -24,7 +25,7 @@ class _HomeState extends State<Home> {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.black,
-            maximumSize: const Size(130, 38),
+            maximumSize: Size(ScreenSize.widthPercentage(context, 35.14), ScreenSize.heightPercentage(context, 5.01)),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8)
             ),
@@ -51,13 +52,16 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    print('width is');
+    print(ScreenSize.widthPercentage(context, 5.093));
+    print(ScreenSize.heightPercentage(context, 1.976));
     return Scaffold(
       backgroundColor: Colors.grey[300],
       drawer: NavBar(),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(80),
         child: AppBar(
-          toolbarHeight: 100,
+          toolbarHeight: ScreenSize.heightPercentage(context, 13.17),
           backgroundColor: Colors.black,
           actions: <Widget>[
             IconButton(
@@ -81,10 +85,10 @@ class _HomeState extends State<Home> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 30, 0),
+                  padding: EdgeInsets.fromLTRB(0, 0, ScreenSize.widthPercentage(context, 12), 0),
                   child: IconButton(
                     icon: Icon(Icons.person),
-                    iconSize: 20,
+                    iconSize: ScreenSize.heightPercentage(context, 2.634),
                     color: Colors.white,
                     onPressed: () async{
                       DocumentSnapshot docSnapshot = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
@@ -102,21 +106,21 @@ class _HomeState extends State<Home> {
                         items: [
                           PopupMenuItem(
                             child: Container(
-                              height: 250.0,
-                              width: 250.0,
+                              height: ScreenSize.heightPercentage(context, 32.926),
+                              width: ScreenSize.widthPercentage(context, 63.658),
                               child: Column(
                                 children: <Widget>[
-                                  SizedBox(height: 20.0),
+                                  SizedBox(height: ScreenSize.heightPercentage(context, 2.634)),
                                   profilePictureUrl.isEmpty
                                       ? Icon(
                                     Icons.account_circle,
-                                    size: 120.0,
+                                    size: ScreenSize.heightPercentage(context, 15.805),
                                   )
                                       : CircleAvatar(
                                     backgroundImage: NetworkImage(profilePictureUrl),
-                                    radius: 50,
+                                    radius: ScreenSize.heightPercentage(context, 6.62),
                                   ),
-                                  SizedBox(height: 10.0),
+                                  SizedBox(height: ScreenSize.heightPercentage(context, 1.32)),
                                   Text(name,
                                     style: TextStyle(
                                       fontSize: 18.0,
@@ -124,7 +128,7 @@ class _HomeState extends State<Home> {
                                       color: Colors.black,
                                     ),
                                   ),
-                                  SizedBox(height: 25.0),
+                                  SizedBox(height: ScreenSize.heightPercentage(context, 3.29)),
                                   ElevatedButton(
                                     child: Text(
                                       "View Profile",
@@ -176,7 +180,7 @@ class _HomeState extends State<Home> {
               if (snapshot.hasData) {
                 Container container = snapshot.data ?? Container();
                 return Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                  padding: EdgeInsets.fromLTRB(20, ScreenSize.heightPercentage(context, 2.634), 20, 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -193,8 +197,8 @@ class _HomeState extends State<Home> {
                   ),
                 );
               } else {
-                return const Padding(
-                  padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+                return Padding(
+                  padding: EdgeInsets.fromLTRB(20, ScreenSize.heightPercentage(context, 2.634), 20, 0),
                   child: Text(
                     'My Semesters',
                     style: TextStyle(
@@ -207,7 +211,7 @@ class _HomeState extends State<Home> {
               }
             },
           ),
-          const SizedBox(height: 10,),
+          SizedBox(height: ScreenSize.heightPercentage(context, 1.32),),
           Expanded(
             child: SemestersGrid(),
           ),

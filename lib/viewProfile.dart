@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:moodle/commonAppBar.dart';
-import 'package:moodle/navBar.dart';
+import 'package:moodle/common_params/commonAppBar.dart';
+import 'package:moodle/common_params/navBar.dart';
+import 'package:moodle/common_params/screenSize.dart';
 import 'package:moodle/updateProfile.dart';
 
 
@@ -51,7 +52,7 @@ class _ViewProfileState extends State<ViewProfile> {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
-                        maximumSize: const Size(140, 38),
+                        maximumSize: Size(ScreenSize.widthPercentage(context, 35.65), ScreenSize.heightPercentage(context, 5.005)),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8)
                         ),
@@ -85,11 +86,11 @@ class _ViewProfileState extends State<ViewProfile> {
               if (snapshot.hasData) {
                 Map<String, dynamic>? userDetails = snapshot.data;
                 return Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 30, 20, 10),
+                  padding: EdgeInsets.fromLTRB(ScreenSize.widthPercentage(context, 5.093), ScreenSize.heightPercentage(context, 3.95), ScreenSize.widthPercentage(context, 5.093), ScreenSize.heightPercentage(context, 1.32)),
                   child: Column(
                     children: [
                       Icon(Icons.account_circle, size: 180),
-                      const SizedBox(height: 15,),
+                      SizedBox(height: ScreenSize.heightPercentage(context, 1.976),),
                       Text(
                         'Name: ${userDetails!['name']}',
                         style: const TextStyle(
@@ -98,7 +99,7 @@ class _ViewProfileState extends State<ViewProfile> {
                           color: Colors.black,
                         ),
                       ),
-                      const SizedBox(height: 10,),
+                      SizedBox(height: ScreenSize.heightPercentage(context, 1.32),),
                       Text(
                         'Bio: I am ${userDetails['role']}',
                         style: const TextStyle(
@@ -107,7 +108,7 @@ class _ViewProfileState extends State<ViewProfile> {
                           color: Color(0xFF616161),
                         ),
                       ),
-                      const SizedBox(height: 10,),
+                      SizedBox(height: ScreenSize.heightPercentage(context, 1.32),),
                       Text(
                         'Email: ${userDetails['email']}',
                         style: const TextStyle(

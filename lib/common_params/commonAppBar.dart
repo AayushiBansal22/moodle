@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:moodle/common_params/screenSize.dart';
 
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   CommonAppBar({super.key});
@@ -14,7 +15,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
     return PreferredSize(
       preferredSize: preferredSize,
       child: AppBar(
-        toolbarHeight: 100,
+        toolbarHeight: ScreenSize.heightPercentage(context, 13.17),
         backgroundColor: Colors.black,
         actions: <Widget>[
           IconButton(
@@ -28,10 +29,10 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 30, 0),
+                padding: EdgeInsets.fromLTRB(0, 0, ScreenSize.widthPercentage(context, 12), 0),
                 child: IconButton(
                   icon: Icon(Icons.person),
-                  iconSize: 22,
+                  iconSize: ScreenSize.heightPercentage(context, 2.8),
                   color: Colors.white,
                   onPressed: () async{
                     DocumentSnapshot docSnapshot = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
@@ -49,21 +50,21 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
                       items: [
                         PopupMenuItem(
                           child: Container(
-                            height: 250.0,
-                            width: 250.0,
+                            height: ScreenSize.heightPercentage(context, 32.926),
+                            width: ScreenSize.widthPercentage(context, 63.658),
                             child: Column(
                               children: <Widget>[
-                                SizedBox(height: 20.0),
+                                SizedBox(height: ScreenSize.heightPercentage(context, 2.634)),
                                 profilePictureUrl.isEmpty
                                     ? Icon(
                                   Icons.account_circle,
-                                  size: 120.0,
+                                  size: ScreenSize.heightPercentage(context, 15.805),
                                 )
                                     : CircleAvatar(
                                   backgroundImage: NetworkImage(profilePictureUrl),
-                                  radius: 50,
+                                  radius: ScreenSize.heightPercentage(context, 6.62),
                                 ),
-                                SizedBox(height: 10.0),
+                                SizedBox(height: ScreenSize.heightPercentage(context, 1.32)),
                                 Text(name,
                                   style: TextStyle(
                                     fontSize: 18.0,
@@ -71,7 +72,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
                                     color: Colors.black,
                                   ),
                                 ),
-                                SizedBox(height: 25.0),
+                                SizedBox(height: ScreenSize.heightPercentage(context, 3.29)),
                                 ElevatedButton(
                                   child: Text(
                                     "View Profile",

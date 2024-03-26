@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:moodle/login_pages/forgotPassword.dart';
+import 'package:moodle/common_params/screenSize.dart';
 
 class Login extends StatefulWidget {
   Login({super.key});
@@ -27,19 +28,19 @@ class _LoginState extends State<Login> {
           child: Center(
             child: Column(
               children: [
-                const SizedBox(height: 50,),
-                const Icon(
+                SizedBox(height: ScreenSize.heightPercentage(context, 6.59),),
+                Icon(
                   Icons.lock,
-                  size: 100,
+                  size: ScreenSize.heightPercentage(context, 13.17),
                 ),
-                const SizedBox(height: 50,),
+                SizedBox(height: ScreenSize.heightPercentage(context, 6.59),),
                 Text('Welcome Back',
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.grey[700]
                   ),
                 ),
-                const SizedBox(height: 35,),
+                SizedBox(height: ScreenSize.heightPercentage(context, 4.61),),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 25),
                   child: TextFormField(
@@ -61,7 +62,7 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10,),
+                SizedBox(height: ScreenSize.heightPercentage(context, 1.32),),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 25),
                   child: TextFormField(
@@ -82,14 +83,14 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10,),
+                SizedBox(height: ScreenSize.heightPercentage(context, 1.32),),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 25),
                   child: Text(errorMessage,
                       style: TextStyle(color: Colors.red)
                     )
                 ),
-                const SizedBox(height: 10,),
+                SizedBox(height: ScreenSize.heightPercentage(context, 1.32),),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
@@ -112,10 +113,10 @@ class _LoginState extends State<Login> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 25,),
+                SizedBox(height: ScreenSize.heightPercentage(context, 3.29),),
                 Container(
                   height: 100,
-                  padding: const EdgeInsets.all(25),
+                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: ScreenSize.heightPercentage(context, 3.29)),
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.black,
@@ -154,7 +155,7 @@ class _LoginState extends State<Login> {
                     }
                   ),
                 ),
-                const SizedBox(height: 30,),
+                SizedBox(height: ScreenSize.heightPercentage(context, 3.95),),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(

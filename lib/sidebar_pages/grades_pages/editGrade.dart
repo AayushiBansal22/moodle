@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:moodle/commonAppBar.dart';
-import 'package:moodle/navBar.dart';
+import 'package:moodle/common_params/commonAppBar.dart';
+import 'package:moodle/common_params/navBar.dart';
 
 class EditGrade extends StatefulWidget {
   final String docId;

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 import 'package:moodle/courseIdModel.dart';
+import 'package:moodle/common_params/screenSize.dart';
 
 class CoursesGrid extends StatefulWidget {
   CoursesGrid({super.key});
@@ -34,9 +35,9 @@ class _CoursesGridState extends State<CoursesGrid> {
             DocumentSnapshot course = snapshot.data!.docs[index];
             Map<String, dynamic> display = course.data() as Map<String, dynamic>;
             return Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: ScreenSize.heightPercentage(context, 1.32)),
               child: Container(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: ScreenSize.heightPercentage(context, 1.32)),
                 decoration: BoxDecoration(
                     color: Colors.black,
                     borderRadius: BorderRadius.circular(15.0)
@@ -47,7 +48,7 @@ class _CoursesGridState extends State<CoursesGrid> {
                         course.image,
                         height: 100,
                     ),*/
-                    const SizedBox(height: 10,),
+                    SizedBox(height: ScreenSize.heightPercentage(context, 1.32),),
                     Text(
                       display['title'],
                       style: const TextStyle(
@@ -56,9 +57,9 @@ class _CoursesGridState extends State<CoursesGrid> {
                           fontWeight: FontWeight.w600
                       ),
                     ),
-                    const SizedBox(height: 20,),
+                    SizedBox(height: ScreenSize.heightPercentage(context, 2.634),),
                     Container(
-                      height: 50,
+                      height: ScreenSize.heightPercentage(context, 9.22),
                       child: Scrollbar(
                         child: SingleChildScrollView(
                           child: Text(
@@ -68,33 +69,37 @@ class _CoursesGridState extends State<CoursesGrid> {
                                 color: Colors.white,
                                 fontWeight: FontWeight.w400
                             ),
+                            textAlign: TextAlign.justify,
                           ),
                         ),
                       ),
                     ),
-                    const SizedBox(height: 20,),
-                    Center(
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.grey[600],
-                          maximumSize: const Size(125, 40),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)
+                    const Spacer(),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: ScreenSize.heightPercentage(context, 0.79)),
+                      child: Center(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.grey[600],
+                            maximumSize: Size(ScreenSize.heightPercentage(context, 16.463), ScreenSize.heightPercentage(context, 5.27)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)
+                            ),
                           ),
-                        ),
-                        onPressed: () async {
-                          String courseId = course.id;
-                          log(courseId);
-                          Provider.of<CourseIdModel>(context, listen: false).setCourseId(courseId);
-                          Navigator.pushNamed(context, 'content');
-                        },
-                        child: const Center(
-                          child: Text(
-                            'View Course',
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                          onPressed: () async {
+                            String courseId = course.id;
+                            //log(courseId);
+                            Provider.of<CourseIdModel>(context, listen: false).setCourseId(courseId);
+                            Navigator.pushNamed(context, 'content');
+                          },
+                          child: const Center(
+                            child: Text(
+                              'View Course',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
@@ -105,9 +110,9 @@ class _CoursesGridState extends State<CoursesGrid> {
               ),
             );
           },
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 0.9,
+            childAspectRatio: (ScreenSize.screenWidth(context) / ScreenSize.screenHeight(context)) * 1.65,
           ),
         );
       },

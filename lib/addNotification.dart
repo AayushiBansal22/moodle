@@ -4,8 +4,8 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:moodle/navBar.dart';
-import 'package:moodle/commonAppBar.dart';
+import 'package:moodle/common_params/navBar.dart';
+import 'package:moodle/common_params/commonAppBar.dart';
 import 'package:moodle/projectConstants.dart';
 
 class AddNotification extends StatefulWidget {

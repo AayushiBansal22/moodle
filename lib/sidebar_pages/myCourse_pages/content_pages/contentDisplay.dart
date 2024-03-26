@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:moodle/common_params/screenSize.dart';
 import 'dart:developer';
 import 'package:moodle/main.dart';
 
@@ -30,12 +31,12 @@ class ContentDisplay extends StatelessWidget {
             DocumentSnapshot content = snapshot.data!.docs[index];
             Map<String, dynamic> display = content.data() as Map<String, dynamic>;
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 5.0),
+              padding: EdgeInsets.symmetric(horizontal: ScreenSize.widthPercentage(context, 20.37), vertical: ScreenSize.heightPercentage(context, 0.65)),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+                padding: EdgeInsets.symmetric(horizontal: ScreenSize.widthPercentage(context, 7.64), vertical: ScreenSize.heightPercentage(context, 2.634)),
                 child: Column(
                   children: [
-                    const SizedBox(height: 10,),
+                    SizedBox(height: ScreenSize.heightPercentage(context, 1.32),),
                     Text(
                       display['conTitle'],
                       style: const TextStyle(
@@ -44,7 +45,7 @@ class ContentDisplay extends StatelessWidget {
                           fontWeight: FontWeight.w600
                       ),
                     ),
-                    const SizedBox(height: 20,),
+                    SizedBox(height: ScreenSize.heightPercentage(context, 0.1),),
                     TextButton(
                       onPressed: () {
                         log('$courseId');
@@ -60,6 +61,7 @@ class ContentDisplay extends StatelessWidget {
                             color: Colors.black,
                             fontWeight: FontWeight.w400
                         ),
+                        textAlign: TextAlign.justify,
                       ),
                     ),
                   ],
